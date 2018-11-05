@@ -25,11 +25,17 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          <li>item 1 </li>
-          <li>item 2</li>
-          <li>item 3</li>
-        </ul>
+          <Todo></Todo>
+      </div>
+    );
+  }
+};
+
+class Todo extends React.Component {
+  render() {
+    return (
+      <div>
+      
       </div>
     );
   }
