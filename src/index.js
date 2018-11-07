@@ -1,64 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactLogo from './images/react.png';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-      <Header></Header>
-      <TodoList></TodoList>
-      <NewTodo></NewTodo>
-      <AddTodo></AddTodo>
+        <Header></Header>
+        <TodoList></TodoList>
+        <NewTodo></NewTodo>
       </div>
-    );
+    )
   }
-};
+}
 
-const Header = () => (
-  <div>
-    <img src='./../images/react.png' alt='React Logo'></img>
-    <h1>React To Do</h1>
-  </div>
-);
+const Header = () => {
+  return (
+    <div>
+      <img src={ReactLogo} alt='React Logo'></img>
+      <h1>React To Do</h1>
+    </div>
+  )
+}
 
 class TodoList extends React.Component {
   render() {
     return (
       <div>
-          <Todo></Todo>
+        react list
+        <Todo></Todo>
       </div>
-    );
+    )
   }
-};
+}
 
 class Todo extends React.Component {
   render() {
     return (
       <div>
-      
+        <p>Individual Todo</p>
+        <button>-</button>
       </div>
-    );
+    )
   }
-};
+}
 
-const NewTodo = () => (
-  <form>
-    <input type='text'></input>
-  </form>
-);
-      
-    
-
-
-class AddTodo extends React.Component {
+class NewTodo extends React.Component {
   render() {
     return (
-      <button>+</button>
-    );
+      <div>
+        <form>
+          <input type='text' name='newTodo'></input>
+          <button>+</button>
+        </form>
+      </div>
+    )
   }
-};
+}
 
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
+ReactDOM.render(<App></App>, document.getElementById('root'));
