@@ -32,14 +32,14 @@ class App extends React.Component {
     }
 
     console.log(this.state.items);
-    
+
   }
 
   render() {
     return (
       <div>
         <Header></Header>
-        <TodoList></TodoList>
+        <TodoList todoEntries={this.state.items}></TodoList>
         <NewTodo handleAddItem={this.handleAddItem}></NewTodo>
       </div>
     )
@@ -59,22 +59,26 @@ class TodoList extends React.Component {
     return (
       <div>
         react list
-        <Todo></Todo>
+        <Todo todoEntries={this.props.todoEntries}></Todo>
       </div>
     )
   }
 }
 
 class Todo extends React.Component {
+  createTodo(todo) {
+    return <li key={todo.key}>{todo.text}</li>
+  }
   render() {
+    const todoEntries = this.props.todoEntries;
+    const listTodos = todoEntries.map(this.createTodo);
     return (
       <div>
-        <p>Individual Todo</p>
-        <button>-</button>
+        <ul>{listTodos}</ul>
       </div>
-    )
+    );
   }
-}
+};
 
 class NewTodo extends React.Component {
   render() {
