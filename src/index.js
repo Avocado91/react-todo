@@ -1,14 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactLogo from './images/react.png';
+import ReactLogo from './images/react.png'; //logo
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items:[]
+    }
+    
+    this.handleAddItem = this.handleAddItem.bind(this);
+  }
+
+  handleAddItem(e) {
+    e.preventDefault();
+
+    if (e.target.elements.todo.value !== '') {
+      const newItem = {
+        text: e.target.elements.todo.value,
+        key: Date.now()
+      };
+
+      this.setState((prevState) => {
+        return {
+          items: prevState.items.concat(newItem)
+        };
+      });
+
+      e.target.elements.todo.value = '';
+    }
+
+    console.log(this.state.items);
+    
+  }
+
   render() {
     return (
       <div>
         <Header></Header>
         <TodoList></TodoList>
-        <NewTodo></NewTodo>
+        <NewTodo handleAddItem={this.handleAddItem}></NewTodo>
       </div>
     )
   }
@@ -17,7 +49,6 @@ class App extends React.Component {
 const Header = () => {
   return (
     <div>
-      <img src={ReactLogo} alt='React Logo'></img>
       <h1>React To Do</h1>
     </div>
   )
@@ -49,9 +80,9 @@ class NewTodo extends React.Component {
   render() {
     return (
       <div>
-        <form>
-          <input type='text' name='newTodo'></input>
-          <button>+</button>
+        <form onSubmit={this.props.handleAddItem}>
+          <input type='text' name='todo'></input>
+          <button type='submit'>+</button>
         </form>
       </div>
     )
