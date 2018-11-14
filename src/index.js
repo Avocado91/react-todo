@@ -11,6 +11,16 @@ class App extends React.Component {
     }
     
     this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
+  }
+  handleDeleteItem(key) {
+    const filteredTodos = this.state.items.filter(function(todo) {
+      return (todo.key !== key);
+    });
+
+    this.setState({
+      items: filteredTodos
+    });
   }
 
   handleAddItem(e) {
@@ -39,7 +49,10 @@ class App extends React.Component {
     return (
       <div>
         <Header></Header>
-        <TodoList todoEntries={this.state.items}></TodoList>
+        <TodoList 
+          todoEntries={this.state.items}
+          deleteItem={this.handleDeleteItem}
+        />
         <NewTodo handleAddItem={this.handleAddItem}></NewTodo>
       </div>
     )
@@ -55,20 +68,36 @@ const Header = () => {
 }
 
 class TodoList extends React.Component {
+
   render() {
     return (
       <div>
-        react list
-        <Todo todoEntries={this.props.todoEntries}></Todo>
+        <Todo
+          todoEntries={this.props.todoEntries}
+          delete={this.props.deleteItem}
+        />
       </div>
     )
   }
 }
 
 class Todo extends React.Component {
-  createTodo(todo) {
-    return <li key={todo.key}>{todo.text}</li>
+  constructor(props) {
+    super(props);
+
+    this.createTodo = this.createTodo.bind(this);
   }
+  delete(key) {
+    this.props.delete(key);
+  }
+  createTodo(todo) {
+    return (
+      <li key={todo.key}>
+        {todo.text}
+        <button onClick={() => this.delete(todo.key)}>-</button>
+      </li>)
+  }
+
   render() {
     const todoEntries = this.props.todoEntries;
     const listTodos = todoEntries.map(this.createTodo);
