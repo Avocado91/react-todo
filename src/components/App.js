@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import NewTodo from './NewTodo';
 import TodoList from './TodoList';
-import ReactLogo from './../images/react.png'; //logo
 
 class App extends React.Component {
   constructor(props) {
