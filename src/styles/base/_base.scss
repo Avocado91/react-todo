@@ -1,7 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
-  background: red;
+  background-image: linear-gradient(#8dfeb6, #328beb);
+  background-repeat: no-repeat;
+  font-family:Helvetica, Arial, sans-serif;
+  height: 100vh;
+  padding-top: 10rem;
 }
