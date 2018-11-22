@@ -11,10 +11,13 @@ class Todo extends React.Component {
   }
   createTodo(todo) {
     return (
-      <li key={todo.key}>
-        {todo.text}
-        <button onClick={() => this.delete(todo.key)}>-</button>
-      </li>)
+      <li className='todo' key={todo.key}>
+        <div className='todo__text'>
+          {todo.text}
+        </div> 
+        <button className='button button--delete' onClick={() => this.delete(todo.key)}>-</button>
+      </li>
+    )
   }
 
   render() {
@@ -22,7 +25,7 @@ class Todo extends React.Component {
     const listTodos = todoEntries.map(this.createTodo);
     return (
       <div>
-        <ul>{listTodos}</ul>
+        <ul className='todo-list'>{listTodos}</ul>
       </div>
     );
   }

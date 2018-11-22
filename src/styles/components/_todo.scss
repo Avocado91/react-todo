@@ -1,0 +1,22 @@
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo {
+  font-weight: 300;
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.todo__text {
+  font-size: 2rem;
+  display: inline;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 5px #bbb;
+  padding: 1rem;
+  width: 90%;
+}
